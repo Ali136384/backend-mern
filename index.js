@@ -13,7 +13,7 @@ const app = express();
 app.use(cookieParser());
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "https://ali-haseni.onrender.com/" })); // Replace with your client's domain
 app.use("/api/auth", authRoutes);
 app.use("/api", postRoutes); 
 app.use(expressFileUpload());
