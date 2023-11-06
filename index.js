@@ -13,7 +13,20 @@ const app = express();
 app.use(cookieParser());
 
 app.use(express.json());
-app.use(cors({ origin: "https://ali-haseni.onrender.com/" })); // Replace with your client's domain
+
+app.use(cors()); // Replace with your client's domain
+
+const allowedOrigins = ["https://ali-haseni.onrender.com"];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+}));
+
 app.use("/api/auth", authRoutes);
 app.use("/api", postRoutes); 
 app.use(expressFileUpload());
