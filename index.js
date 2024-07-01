@@ -47,13 +47,7 @@ app.get("/api/data", async (req, res) => {
   }
 });
 
-mongoose.connect(
-  "mongodb+srv://haseniali920:tbknuFIbLAT5N0jG@learn-mongo.xcfojxz.mongodb.net/?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+
 
 // Listen for the 'connected' event
 mongoose.connection.on("connected", () => {
